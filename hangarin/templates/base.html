@@ -5,138 +5,96 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>{% block title %}Hangarin{% endblock %}</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
-    <link rel="stylesheet" href="{% static 'css/ready.css' %}">
-    <link rel="stylesheet" href="{% static 'css/demo.css' %}">
+
+    <!-- Bootstrap CSS (CDN) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons (CDN) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Google Fonts (CDN) -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Your Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <div class="wrapper">
-        <div class="main-header">
-            <div class="logo-header">
-                <a href="/" class="logo">
-                    Hangarin
-                </a>
-                <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <button class="topbar-toggler more"><i class="la la-ellipsis-v"></i></button>
-            </div>
-            <nav class="navbar navbar-header navbar-expand-lg">
-                <div class="container-fluid">
-                    <form class="navbar-left navbar-form nav-search mr-md-3" action="">
-                        <div class="input-group">
-                            <input type="text" placeholder="Search ..." class="form-control">
-                            <div class="input-group-append">
-                                <span class="input-group-text">
-                                    <i class="la la-search search-icon"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </form>
-                    <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
-                        <li class="nav-item dropdown hidden-caret">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="la la-bell"></i>
-                                <span class="notification">3</span>
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
-                                <img src="{% static 'img/profile.jpg' %}" alt="user-img" width="36" class="img-circle">
-                                <span>Admin</span>
-                            </a>
-                            <ul class="dropdown-menu dropdown-user">
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#"><i class="fa fa-power-off"></i> Logout</a>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+
+    <!-- ===== SIDEBAR ===== -->
+    <div class="sidebar">
+        <div class="sidebar-logo">
+            <a href="/">
+                <i class="bi bi-check2-square"></i> Hangarin
+            </a>
         </div>
 
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <div class="scrollbar-inner sidebar-wrapper">
-                <div class="user">
-                    <div class="photo">
-                        <img src="{% static 'img/profile.jpg' %}">
-                    </div>
-                    <div class="info">
-                        <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
-                            <span>
-                                Admin
-                                <span class="user-level">Administrator</span>
-                                <span class="caret"></span>
-                            </span>
-                        </a>
-                    </div>
-                </div>
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a href="/">
-                            <i class="la la-dashboard"></i>
-                            <p>Dashboard</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#">
-                            <i class="la la-tasks"></i>
-                            <p>Tasks</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#">
-                            <i class="la la-list"></i>
-                            <p>Subtasks</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#">
-                            <i class="la la-sticky-note"></i>
-                            <p>Notes</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#">
-                            <i class="la la-tag"></i>
-                            <p>Categories</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#">
-                            <i class="la la-flag"></i>
-                            <p>Priorities</p>
-                        </a>
-                    </li>
-                </ul>
+        <div class="sidebar-user">
+            <img src="https://ui-avatars.com/api/?name=Admin&background=6c63ff&color=fff&size=42" alt="profile">
+            <div class="user-info">
+                <h6>Admin</h6>
+                <span>Administrator</span>
             </div>
         </div>
 
-        <!-- Main Panel -->
-        <div class="main-panel">
-            {% block content %}
-            {% endblock %}
+        <nav class="sidebar-nav">
+            <div class="nav-label">Main Menu</div>
+            <a href="/" class="nav-link {% block nav_dashboard %}{% endblock %}">
+                <i class="bi bi-speedometer2"></i> Dashboard
+            </a>
+            <a href="#" class="nav-link {% block nav_tasks %}{% endblock %}">
+                <i class="bi bi-list-task"></i> Tasks
+            </a>
+            <a href="#" class="nav-link {% block nav_subtasks %}{% endblock %}">
+                <i class="bi bi-diagram-3"></i> Subtasks
+            </a>
+            <a href="#" class="nav-link {% block nav_notes %}{% endblock %}">
+                <i class="bi bi-sticky"></i> Notes
+            </a>
 
-            <footer class="footer">
-                <div class="container-fluid">
-                    <div class="copyright ml-auto">
-                        2024, Hangarin Task Manager
-                    </div>
-                </div>
-            </footer>
-        </div>
-
+            <div class="nav-label mt-2">Settings</div>
+            <a href="#" class="nav-link {% block nav_categories %}{% endblock %}">
+                <i class="bi bi-tag"></i> Categories
+            </a>
+            <a href="#" class="nav-link {% block nav_priorities %}{% endblock %}">
+                <i class="bi bi-flag"></i> Priorities
+            </a>
+        </nav>
     </div>
 
-<script src="{% static 'js/core/jquery.3.2.1.min.js' %}"></script>
-<script src="{% static 'js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js' %}"></script>
-<script src="{% static 'js/core/popper.min.js' %}"></script>
-<script src="{% static 'js/core/bootstrap.min.js' %}"></script>
-<script src="{% static 'js/plugin/chartist/chartist.min.js' %}"></script>
-<script src="{% static 'js/plugin/bootstrap-notify/bootstrap-notify.min.js' %}"></script>
-<script src="{% static 'js/plugin/jquery-scrollbar/jquery.scrollbar.min.js' %}"></script>
-<script src="{% static 'js/ready.min.js' %}"></script>
+    <!-- ===== TOP NAVBAR ===== -->
+    <div class="top-navbar">
+        <h5 class="page-title">{% block page_title %}Dashboard{% endblock %}</h5>
+        <div class="nav-actions">
+            <button class="icon-btn">
+                <i class="bi bi-bell"></i>
+                <span class="notif-dot"></span>
+            </button>
+            <button class="icon-btn">
+                <i class="bi bi-gear"></i>
+            </button>
+            <div class="admin-profile">
+                <img src="https://ui-avatars.com/api/?name=Admin&background=6c63ff&color=fff&size=36" alt="admin">
+                <span>Admin</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <div class="main-content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="main-footer">
+        2024 &copy; Hangarin Task Manager. All rights reserved.
+    </footer>
+
+    <!-- Bootstrap JS (CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="{% static 'js/main.js' %}"></script>
+
 </body>
 </html>
