@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="content">
+    <div class="container-fluid">
+        <h4 class="page-title">Dashboard</h4>
+        <div class="row">
+
+            <!-- Task Summary Cards -->
+            <div class="col-md-3">
+                <div class="card card-stats card-primary">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="icon-big text-center">
+                                    <i class="la la-tasks"></i>
+                                </div>
+                            </div>
+                            <div class="col-7 d-flex align-items-center">
+                                <div class="numbers">
+                                    <p class="card-category">Total Tasks</p>
+                                    <h4 class="card-title">{{ total_tasks }}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card card-stats card-success">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="icon-big text-center">
+                                    <i class="la la-check-circle"></i>
+                                </div>
+                            </div>
+                            <div class="col-7 d-flex align-items-center">
+                                <div class="numbers">
+                                    <p class="card-category">Completed</p>
+                                    <h4 class="card-title">{{ completed_tasks }}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card card-stats card-warning">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="icon-big text-center">
+                                    <i class="la la-spinner"></i>
+                                </div>
+                            </div>
+                            <div class="col-7 d-flex align-items-center">
+                                <div class="numbers">
+                                    <p class="card-category">In Progress</p>
+                                    <h4 class="card-title">{{ inprogress_tasks }}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card card-stats card-danger">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="icon-big text-center">
+                                    <i class="la la-clock-o"></i>
+                                </div>
+                            </div>
+                            <div class="col-7 d-flex align-items-center">
+                                <div class="numbers">
+                                    <p class="card-category">Pending</p>
+                                    <h4 class="card-title">{{ pending_tasks }}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Recent Tasks Table -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Recent Tasks</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Status</th>
+                                        <th>Deadline</th>
+                                        <th>Priority</th>
+                                        <th>Category</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for task in home %}
+                                    <tr>
+                                        <td>{{ task.title }}</td>
+                                        <td>
+                                            {% if task.status == 'Completed' %}
+                                                <span class="badge badge-success">{{ task.status }}</span>
+                                            {% elif task.status == 'In Progress' %}
+                                                <span class="badge badge-warning">{{ task.status }}</span>
+                                            {% else %}
+                                                <span class="badge badge-danger">{{ task.status }}</span>
+                                            {% endif %}
+                                        </td>
+                                        <td>{{ task.deadline }}</td>
+                                        <td>{{ task.priority }}</td>
+                                        <td>{{ task.category }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
