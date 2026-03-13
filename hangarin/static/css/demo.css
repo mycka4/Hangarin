@@ -1,114 +1,275 @@
-.update-pro{
-	margin: 15px 25px;
+/* ===== UPDATE PRO SECTION - VIOLET THEME ===== */
+.update-pro {
+    margin: 15px 25px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(59, 31, 110, 0.03), rgba(124, 58, 237, 0.05));
+    padding: 5px;
 }
 
 .update-pro button {
-	padding: 13px 25px;
-	background: #4d7cfe;
-	color: #fff;
-	border-radius: 3px;
-	justify-content: center;
-	width: 100%;
-	border: 0;
-	cursor: pointer;
+    padding: 15px 25px;
+    background: linear-gradient(135deg, #3b1f6e, #7c3aed) !important;
+    color: #ffffff !important;
+    border-radius: 10px !important;
+    justify-content: center;
+    width: 100%;
+    border: none !important;
+    cursor: pointer;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    letter-spacing: 0.5px !important;
+    text-transform: uppercase !important;
+    box-shadow: 0 4px 15px rgba(59, 31, 110, 0.2) !important;
+    transition: all 0.3s ease !important;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .update-pro button:hover {
-	background: #4d7cfe !important;
-	color: #fff;
-	transform: translateY(-2px);
-	transition: all .2s linear;
+    background: linear-gradient(135deg, #2e1657, #6b21a8) !important;
+    color: #ffffff !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 8px 25px rgba(59, 31, 110, 0.3) !important;
 }
 
-.update-pro:hover button:before{
-	display: none;
+.update-pro button:active {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 5px 15px rgba(59, 31, 110, 0.2) !important;
 }
 
-.update-pro button p, .update-pro button i{
-	color: #fff !important;
-	margin-bottom: 0px;
+.update-pro button p {
+    color: #ffffff !important;
+    margin-bottom: 0px;
+    font-weight: 600;
 }
 
-.update-pro button i{
-	margin-right: 5px !important;
-	font-size: 23px;
-	color: #C3C5CA;
-	margin-right: 15px;
-	width: 25px;
-	text-align: center;
-	vertical-align: middle;
-	float: left;
+.update-pro button i {
+    color: rgba(255, 255, 255, 0.9) !important;
+    margin-right: 10px !important;
+    font-size: 20px;
+    width: 24px;
+    text-align: center;
+    vertical-align: middle;
+    transition: all 0.3s ease !important;
 }
 
-.demo .btn, .demo .progress{
-	margin-bottom: 15px !important;
+.update-pro button:hover i {
+    transform: scale(1.1) !important;
+    color: #ffffff !important;
 }
 
-.demo .form-check-label, .demo .form-radio-label{
-	margin-right: 15px;
+/* Optional: Add a subtle pulse animation for attention */
+.update-pro {
+    animation: subtle-pulse 2s infinite;
 }
 
-.demo #slider{
-	margin-bottom: 15px;
+@keyframes subtle-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(124, 58, 237, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(124, 58, 237, 0);
+    }
 }
 
-.table-typo tbody > tr > td{
-	border-color: #fafafa;
+/* ===== DEMO SECTION (if used) ===== */
+.demo .btn,
+.demo .progress {
+    margin-bottom: 15px !important;
 }
 
-.table-typo tbody > tr > td:first-child{
-	min-width: 200px;
-	vertical-align: bottom;
+.demo .form-check-label,
+.demo .form-radio-label {
+    margin-right: 15px;
+    color: #4a4a4a !important;
+    font-weight: 500 !important;
 }
 
-.table-typo tbody > tr > td:first-child p{
-	font-size: 14px;
-	color: #333;
+.demo .form-check-input:checked {
+    background-color: var(--violet-accent) !important;
+    border-color: var(--violet-accent) !important;
 }
 
+.demo #slider {
+    margin-bottom: 15px;
+}
+
+/* ===== TABLE TYPO ===== */
+.table-typo {
+    border-radius: 12px !important;
+    overflow: hidden !important;
+}
+
+.table-typo tbody > tr > td {
+    border-color: var(--violet-ultra-light) !important;
+    padding: 15px !important;
+}
+
+.table-typo tbody > tr > td:first-child {
+    min-width: 200px;
+    vertical-align: middle;
+}
+
+.table-typo tbody > tr > td:first-child p {
+    font-size: 14px;
+    color: var(--violet-primary) !important;
+    font-weight: 600 !important;
+    margin-bottom: 0px !important;
+}
+
+.table-typo tbody > tr:hover td {
+    background: var(--violet-ultra-light) !important;
+}
+
+/* ===== DEMO ICON GRID ===== */
 .demo-icon {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	margin-bottom: 20px;
-	padding: 10px;
-	transition: all .2s;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 12px 15px;
+    transition: all 0.3s ease;
+    border-radius: 10px !important;
+    background: #ffffff;
+    border: 1px solid transparent;
 }
 
-.demo-icon:hover{
-	background-color: #f4f5f8;
-	border-radius: 3px;
+.demo-icon:hover {
+    background: var(--violet-ultra-light) !important;
+    border-color: var(--violet-accent) !important;
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(124, 58, 237, 0.1);
 }
 
-.demo-icon .icon-preview{
-	font-size: 1.8rem;
-	margin-right: 10px;
-	line-height: 1;
-	color: #333439;
+.demo-icon .icon-preview {
+    font-size: 1.8rem;
+    margin-right: 15px;
+    line-height: 1;
+    color: var(--violet-accent) !important;
+    width: 40px;
+    text-align: center;
+    transition: all 0.3s ease;
 }
 
-.demo-icon .icon-class{
-	font-weight: 300;
-	font-size: 13px;
-	color: #777;
+.demo-icon:hover .icon-preview {
+    transform: scale(1.1);
+    color: var(--violet-primary) !important;
 }
 
-.from-show-notify .form-control{
-	margin-bottom: 15px;
+.demo-icon .icon-class {
+    font-weight: 500 !important;
+    font-size: 14px;
+    color: #4a4a4a !important;
+    font-family: 'Monaco', 'Courier New', monospace !important;
 }
 
-.from-show-notify label{
-	padding-top: 0.65rem;
+.demo-icon .icon-class::before {
+    content: '.';
+    color: var(--violet-light);
+    margin-right: 2px;
 }
 
-@media screen and (max-width: 550px){
-	.table-typo tr td{
-		display: flex;
-		align-items: center;
-		word-break: break-word;
-	}
+/* ===== NOTIFICATION FORM ===== */
+.from-show-notify .form-control {
+    margin-bottom: 15px;
+    border: 1px solid var(--violet-ultra-light) !important;
+}
 
-	.table-typo tr td:first-child p{
-		margin-bottom: 0px;
-	}
+.from-show-notify .form-control:focus {
+    border-color: var(--violet-accent) !important;
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1) !important;
+}
+
+.from-show-notify label {
+    padding-top: 0.65rem;
+    color: var(--violet-primary) !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+/* ===== NOTIFICATIONS ===== */
+.notify-alert {
+    border-radius: 12px !important;
+    border: none !important;
+    box-shadow: 0 10px 25px rgba(109, 40, 217, 0.15) !important;
+}
+
+.notify-alert.alert-primary {
+    background: linear-gradient(135deg, #3b1f6e, #7c3aed) !important;
+    color: #ffffff !important;
+}
+
+.notify-alert .alert-heading {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+}
+
+/* ===== RESPONSIVE ===== */
+@media screen and (max-width: 550px) {
+    .table-typo tr td {
+        display: flex;
+        align-items: center;
+        word-break: break-word;
+        border: none !important;
+        padding: 10px !important;
+    }
+    
+    .table-typo tr td:first-child p {
+        margin-bottom: 0px;
+        font-size: 13px;
+    }
+    
+    .table-typo tr {
+        display: block;
+        margin-bottom: 15px;
+        border: 1px solid var(--violet-ultra-light) !important;
+        border-radius: 10px !important;
+        background: #ffffff;
+    }
+    
+    .demo-icon {
+        margin-bottom: 15px;
+        padding: 10px;
+    }
+    
+    .demo-icon .icon-preview {
+        font-size: 1.5rem;
+        width: 35px;
+    }
+    
+    .demo-icon .icon-class {
+        font-size: 12px;
+        word-break: break-word;
+    }
+}
+
+/* Optional: Add a ribbon or "PRO" badge */
+.update-pro {
+    position: relative;
+}
+
+.update-pro::before {
+    content: '⭐ PRO';
+    position: absolute;
+    top: -8px;
+    right: 15px;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #000;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 20px;
+    z-index: 2;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
