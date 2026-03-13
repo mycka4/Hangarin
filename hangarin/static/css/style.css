@@ -1,0 +1,151 @@
+/* ================================================
+   HANGARIN - Violet Theme
+   ================================================ */
+
+/* ===== SIDEBAR ===== */
+.sidebar,
+.sidebar .sidebar-wrapper {
+    background: #3b1f6e !important;
+}
+
+.sidebar .user .info a span,
+.sidebar .user .info a {
+    color: #ffffff !important;
+}
+
+.sidebar .user .user-level {
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.sidebar .nav .nav-item > a {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.sidebar .nav .nav-item > a:hover,
+.sidebar .nav .nav-item.active > a {
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.12) !important;
+    border-left: 4px solid #c084fc !important;
+}
+
+.sidebar .nav .nav-item > a i,
+.sidebar .nav .nav-item > a p {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.sidebar .nav .nav-item.active > a i,
+.sidebar .nav .nav-item.active > a p,
+.sidebar .nav .nav-item > a:hover i,
+.sidebar .nav .nav-item > a:hover p {
+    color: #ffffff !important;
+}
+
+/* ===== LOGO HEADER ===== */
+.logo-header {
+    background: #2e1657 !important;
+    border-bottom: none !important;
+}
+
+.logo-header .logo {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+}
+
+/* ===== BODY ===== */
+body {
+    background: #f5f3ff !important;
+}
+
+/* ===== MAIN HEADER ===== */
+.main-header {
+    background: #ffffff !important;
+    border-bottom: 1px solid #ede9fe !important;
+}
+
+/* ===== STAT CARD BACKGROUNDS =====
+   ready.css uses .card-primary { background: #1D62F0; } (no !important)
+   Our !important below wins.
+*/
+.card-primary {
+    background: linear-gradient(135deg, #3b1f6e, #7c3aed) !important;
+    border-radius: 12px !important;
+    border: none !important;
+}
+
+.card-success {
+    background: linear-gradient(135deg, #5b21b6, #8b5cf6) !important;
+    border-radius: 12px !important;
+    border: none !important;
+}
+
+.card-warning {
+    background: linear-gradient(135deg, #6d28d9, #a78bfa) !important;
+    border-radius: 12px !important;
+    border: none !important;
+}
+
+.card-danger {
+    background: linear-gradient(135deg, #4c1d95, #c084fc) !important;
+    border-radius: 12px !important;
+    border: none !important;
+}
+
+/* ===== REGULAR CARDS ===== */
+.card {
+    border-radius: 12px !important;
+    box-shadow: 0 4px 20px rgba(109, 40, 217, 0.08) !important;
+    border: none !important;
+}
+
+.card .card-header {
+    border-bottom: 1px solid #ede9fe !important;
+    background: #ffffff !important;
+}
+
+.card:not(.card-primary):not(.card-success):not(.card-warning):not(.card-danger) .card-title {
+    color: #3b1f6e !important;
+    font-weight: 700 !important;
+}
+
+.card:not(.card-primary):not(.card-success):not(.card-warning):not(.card-danger) .card-category {
+    color: #7c3aed !important;
+}
+
+/* ===== PAGE TITLE ===== */
+.page-title {
+    color: #3b1f6e !important;
+    font-weight: 800 !important;
+}
+
+/* ===== TABLE ===== */
+.table thead th {
+    background: #f5f3ff !important;
+    color: #7c3aed !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    border: none !important;
+    padding: 12px 8px !important;
+}
+
+.table tbody tr:hover td {
+    background: #f5f3ff !important;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    background: #ffffff !important;
+    border-top: 1px solid #ede9fe !important;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+    background: rgba(124, 58, 237, 0.3);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #7c3aed;
+}
