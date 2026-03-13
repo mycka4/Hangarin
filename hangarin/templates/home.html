@@ -1,13 +1,16 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block title %}Dashboard - Hangarin{% endblock %}
+{% block nav_dashboard %}active{% endblock %}
+
 {% block content %}
 <div class="content">
     <div class="container-fluid">
         <h4 class="page-title">Dashboard</h4>
-        <div class="row">
 
-            <!-- Task Summary Cards -->
+        <!-- ===== STAT CARDS ===== -->
+        <div class="row">
             <div class="col-md-3">
                 <div class="card card-stats card-primary">
                     <div class="card-body">
@@ -87,21 +90,22 @@
                     </div>
                 </div>
             </div>
-
         </div>
 
-        <!-- Recent Tasks Table -->
+        <!-- ===== RECENT TASKS TABLE ===== -->
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title">Recent Tasks</div>
+                        <div class="card-category">Overview of all tasks</div>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
+                                        <th>#</th>
                                         <th>Title</th>
                                         <th>Status</th>
                                         <th>Deadline</th>
@@ -112,24 +116,33 @@
                                 <tbody>
                                     {% for task in home %}
                                     <tr>
+                                        <td>{{ forloop.counter }}</td>
                                         <td>{{ task.title }}</td>
                                         <td>
                                             {% if task.status == 'Completed' %}
-                                                <span class="badge badge-success">{{ task.status }}</span>
+                                                <span class="badge badge-success">Completed</span>
                                             {% elif task.status == 'In Progress' %}
-                                                <span class="badge badge-warning">{{ task.status }}</span>
+                                                <span class="badge badge-warning">In Progress</span>
                                             {% else %}
-                                                <span class="badge badge-danger">{{ task.status }}</span>
+                                                <span class="badge badge-danger">Pending</span>
                                             {% endif %}
                                         </td>
-                                        <td>{{ task.deadline }}</td>
+                                        <td>{{ task.deadline|date:"M d, Y" }}</td>
                                         <td>{{ task.priority }}</td>
                                         <td>{{ task.category }}</td>
+                                    </tr>
+                                    {% empty %}
+                                    <tr>
+                                        <td colspan="6" class="text-center">No tasks found.</td>
                                     </tr>
                                     {% endfor %}
                                 </tbody>
                             </table>
                         </div>
+                    </div>
+                    <div class="card-footer">
+                        <hr>
+                        Total of {{ total_tasks }} task(s) recorded.
                     </div>
                 </div>
             </div>
