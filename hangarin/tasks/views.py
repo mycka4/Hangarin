@@ -1,8 +1,7 @@
+from django.shortcuts import render
 from django.views.generic.list import ListView
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.urls import reverse_lazy
-from tasks.models import Task, SubTask, Note, Category, Priority
-from tasks.form import TaskForm, SubTaskForm, NoteForm, CategoryForm, PriorityForm
+from tasks.models import Task
+
 class HomePageView(ListView):
     model = Task
     context_object_name = 'home'
@@ -22,8 +21,4 @@ class TaskList(ListView):
     template_name = 'task_list.html'
     paginate_by = 5
 
-class TaskCreateView(CreateView):
-    model = Task
-    form_class = TaskForm
-    template_name = 'task_form.html'
-    success_url = reverse_lazy('task-list')
+
