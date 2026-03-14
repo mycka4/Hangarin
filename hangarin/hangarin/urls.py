@@ -25,5 +25,6 @@ urlpatterns = [
     path('', views.HomePageView.as_view(), name='home'),
     
     path('task_list', views.TaskList.as_view(), name='task-list'),
+    path('task_list/add', views.TaskCreateView.as_view(), name='task-add'),
     
 ]
