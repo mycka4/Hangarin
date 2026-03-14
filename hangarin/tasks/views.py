@@ -2,8 +2,8 @@ from django.shortcuts import render
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from tasks.models import Task
-from tasks.forms import TaskForm
+from tasks.models import Task, SubTask
+from tasks.forms import TaskForm, SubTaskForm
 
 class HomePageView(ListView):
     model = Task
@@ -40,5 +40,20 @@ class TaskDeleteView(DeleteView):
     model = Task
     template_name = 'task_del.html'
     success_url = reverse_lazy('task-list')
+
+class SubTaskList(ListView):
+    model = Task 
+    context_object_name = 'subtasks'
+    template_name = 'subtask_list.html'
+    paginate_by = 5
+
+class SubTaskCreateView(CreateView):
+    model = Task
+    form_class = SubTaskForm
+    template_name = 'subtask_form.html'
+    success_url = reverse_lazy('subtask-list')
+
+
+
 
 
