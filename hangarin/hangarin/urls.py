@@ -16,19 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from tasks import views
+from tasks.views import HomePageView, TaskList, TaskCreateView, TaskUpdateView, TaskDeleteView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
 
     # Home
-    path('', views.HomePageView.as_view(), name='home'),
+    path('', HomePageView.as_view(), name='home'),
 
     # Task
-    path('task_list', views.TaskList.as_view(), name='task-list'),
-    path('task_list/add', views.TaskCreateView.as_view(), name='task-add'),
-    path('task_list/<pk>', views.TaskUpdateView.as_view(), name='task-update'),
-    path('task_list/<pk>/delete', views.TaskDeleteView.as_view(), name='task-delete'),
+    path('task_list', TaskList.as_view(), name='task-list'),
+    path('task_list/add', TaskCreateView.as_view(), name='task-add'),
+    path('task_list/<pk>', TaskUpdateView.as_view(), name='task-update'),
+    path('task_list/<pk>/delete', TaskDeleteView.as_view(), name='task-delete'),
     
 
     

@@ -5,4 +5,13 @@ from .models import Task
 class TaskForm(ModelForm):
     class Meta:
         model = Task
-        fields = '__all__'
+        fields = "__all__"
+        widgets = {
+            'deadline': forms.DateTimeInput(
+                attrs={
+                    'type': 'datetime-local',
+                    'class': 'form-control'
+                },
+                format='%Y-%m-%dT%H:%M'
+            ),
+        }
