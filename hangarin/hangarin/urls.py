@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from tasks.views import HomePageView, TaskList, TaskCreateView, TaskUpdateView, TaskDeleteView
 from tasks.views import SubTaskList, SubTaskCreateView, SubTaskUpdateView, SubTaskDeleteView
-from tasks.views import CategoryList
+from tasks.views import CategoryList, CategoryCreateView, CategoryUpdateView, CategoryDeleteView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -40,6 +40,9 @@ urlpatterns = [
     
     #Category
     path('category_list', CategoryList.as_view(), name = 'category-list'),
+    path('category_list/add', CategoryCreateView.as_view(), name = 'category-add'),
+    path('category_list/<pk>', CategoryUpdateView.as_view(), name='category-update'),
+    path('category_list/<pk>/delete', CategoryDeleteView.as_view(), name='category-delete'),
     
-    
+   
 ]
