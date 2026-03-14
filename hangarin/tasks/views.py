@@ -42,31 +42,31 @@ class TaskDeleteView(DeleteView):
     success_url = reverse_lazy('task-list')
 
 class SubTaskList(ListView):
-    model = Task 
+    model = SubTask 
     context_object_name = 'subtasks'
     template_name = 'subtask_list.html'
     paginate_by = 5
 
 class SubTaskCreateView(CreateView):
-    model = Task
+    model = SubTask
     form_class = SubTaskForm
     template_name = 'subtask_form.html'
     success_url = reverse_lazy('subtask-list')
 
 class SubTaskUpdateView(UpdateView):
-    model = Task
+    model = SubTask
     form_class = SubTaskForm
     template_name = 'subtask_form.html'
     success_url = reverse_lazy('subtask-list')
 
 class SubTaskDeleteView(DeleteView):
-    model = Task
+    model = SubTask
     template_name = 'subtask_del.html'
     success_url = reverse_lazy('subtask-list')
 
 class CategoryList(ListView):
     model = Category
-    context_object_name = 'category'
+    context_object_name = 'categories'
     template_name = 'category_list.html'
     paginate_by = 5
 

@@ -3,6 +3,7 @@ from django.utils import timezone
 from faker import Faker
 from tasks.models import Priority, Category, Task, Note, SubTask
 
+
 class Command(BaseCommand):
     help = 'Seed fake data for Hangarin'
 
@@ -12,6 +13,7 @@ class Command(BaseCommand):
         self.create_tasks(10)
         self.create_notes(10)
         self.create_subtasks(10)
+        self.stdout.write(self.style.SUCCESS('All fake data seeded successfully!'))
 
     def seed_priorities(self):
         priorities = ['High', 'Medium', 'Low', 'Critical', 'Optional']
@@ -40,18 +42,20 @@ class Command(BaseCommand):
 
     def create_notes(self, count):
         fake = Faker()
+        tasks = list(Task.objects.all())
         for _ in range(count):
             Note.objects.create(
-                task=Task.objects.order_by('?').first(),
+                task=fake.random_element(elements=tasks),
                 content=fake.paragraph(nb_sentences=3)
             )
         self.stdout.write(self.style.SUCCESS('Notes created successfully.'))
 
     def create_subtasks(self, count):
         fake = Faker()
+        tasks = list(Task.objects.all())
         for _ in range(count):
             SubTask.objects.create(
-                parent_task=Task.objects.order_by('?').first(),
+                parent_task=fake.random_element(elements=tasks),
                 title=fake.sentence(nb_words=5),
                 status=fake.random_element(elements=["Pending", "In Progress", "Completed"])
             )
