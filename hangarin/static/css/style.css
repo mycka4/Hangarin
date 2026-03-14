@@ -1,0 +1,373 @@
+/* ================================================
+   HANGARIN — Violet Elegance Theme
+   Font: Playfair Display + Inter
+   ================================================ */
+
+/* ===== FONT IMPORT ===== */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ===== GLOBAL FONT ===== */
+body,
+p, span, td, th, label, input, select, textarea, button {
+    font-family: 'Inter', sans-serif !important;
+}
+
+h1, h2, h3, h4, h5, h6,
+.page-title,
+.card-title,
+.logo,
+.navbar-brand {
+    font-family: 'Playfair Display', serif !important;
+}
+
+/* ===== BODY ===== */
+body {
+    background: #f3f0fb !important;
+    color: #1e1040 !important;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar,
+.sidebar .sidebar-wrapper {
+    background: #1e0a4a !important;
+}
+
+.sidebar .logo-header,
+.logo-header {
+    background: #160838 !important;
+    border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+    width: 250px !important;
+    min-width: 250px !important;
+}
+
+.logo-header .logo {
+    font-family: 'Playfair Display', serif !important;
+    font-weight: 800 !important;
+    font-size: 22px !important;
+    color: #ffffff !important;
+    letter-spacing: 1px !important;
+}
+
+.sidebar .user .info a span {
+    font-family: 'Playfair Display', serif !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+}
+
+.sidebar .user .user-level {
+    color: rgba(255, 255, 255, 0.5) !important;
+    font-size: 11px !important;
+    font-family: 'Inter', sans-serif !important;
+    letter-spacing: 1px !important;
+    text-transform: uppercase !important;
+}
+
+.sidebar .nav .nav-item > a {
+    color: rgba(255, 255, 255, 0.6) !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.3px !important;
+    transition: all 0.2s ease !important;
+}
+
+.sidebar .nav .nav-item > a i,
+.sidebar .nav .nav-item > a p {
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.sidebar .nav .nav-item > a:hover,
+.sidebar .nav .nav-item.active > a {
+    color: #ffffff !important;
+    background: rgba(139, 92, 246, 0.2) !important;
+    border-left: 3px solid #a78bfa !important;
+}
+
+.sidebar .nav .nav-item > a:hover i,
+.sidebar .nav .nav-item > a:hover p,
+.sidebar .nav .nav-item.active > a i,
+.sidebar .nav .nav-item.active > a p {
+    color: #ffffff !important;
+}
+
+/* ===== MAIN HEADER ===== */
+.main-header {
+    background: #ffffff !important;
+    border-bottom: 2px solid #ede9fe !important;
+    box-shadow: 0 2px 12px rgba(109, 40, 217, 0.06) !important;
+}
+
+/* ===== FIX NAVBAR OVERFLOW ===== */
+.main-header .navbar {
+    padding: 0 15px !important;
+}
+
+.main-header .container-fluid {
+    display: flex !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
+}
+
+.navbar-nav.topbar-nav {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    flex-shrink: 0 !important;
+}
+
+.navbar-left {
+    flex: 1 !important;
+    max-width: 400px !important;
+}
+
+/* ===== PAGE TITLE ===== */
+.page-title {
+    font-family: 'Playfair Display', serif !important;
+    font-size: 26px !important;
+    font-weight: 700 !important;
+    color: #2d1b69 !important;
+    letter-spacing: 0.5px !important;
+}
+
+/* ===== STAT CARDS ===== */
+.card-primary {
+    background: linear-gradient(135deg, #2d1b69 0%, #6d28d9 100%) !important;
+    border: none !important;
+    border-radius: 14px !important;
+    box-shadow: 0 8px 24px rgba(45, 27, 105, 0.35) !important;
+}
+
+.card-success {
+    background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 100%) !important;
+    border: none !important;
+    border-radius: 14px !important;
+    box-shadow: 0 8px 24px rgba(76, 29, 149, 0.35) !important;
+}
+
+.card-warning {
+    background: linear-gradient(135deg, #5b21b6 0%, #8b5cf6 100%) !important;
+    border: none !important;
+    border-radius: 14px !important;
+    box-shadow: 0 8px 24px rgba(91, 33, 182, 0.35) !important;
+}
+
+.card-danger {
+    background: linear-gradient(135deg, #6d28d9 0%, #a78bfa 100%) !important;
+    border: none !important;
+    border-radius: 14px !important;
+    box-shadow: 0 8px 24px rgba(109, 40, 217, 0.30) !important;
+}
+
+/* Stat card text */
+.card-primary .card-category,
+.card-success .card-category,
+.card-warning .card-category,
+.card-danger .card-category {
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+}
+
+.card-primary .card-title,
+.card-success .card-title,
+.card-warning .card-title,
+.card-danger .card-title {
+    font-family: 'Playfair Display', serif !important;
+    font-size: 32px !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+}
+
+.card-primary .icon-big > i,
+.card-success .icon-big > i,
+.card-warning .icon-big > i,
+.card-danger .icon-big > i {
+    color: rgba(255, 255, 255, 0.7) !important;
+    font-size: 2.8rem !important;
+}
+
+/* ===== REGULAR CARDS ===== */
+.card:not(.card-primary):not(.card-success):not(.card-warning):not(.card-danger) {
+    border: none !important;
+    border-radius: 14px !important;
+    box-shadow: 0 4px 20px rgba(109, 40, 217, 0.07) !important;
+    background: #ffffff !important;
+}
+
+.card .card-header {
+    background: #ffffff !important;
+    border-bottom: 2px solid #ede9fe !important;
+    border-radius: 14px 14px 0 0 !important;
+    padding: 16px 20px !important;
+}
+
+.card:not(.card-primary):not(.card-success):not(.card-warning):not(.card-danger) .card-title {
+    font-family: 'Playfair Display', serif !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    color: #2d1b69 !important;
+}
+
+.card:not(.card-primary):not(.card-success):not(.card-warning):not(.card-danger) .card-category {
+    font-family: 'Inter', sans-serif !important;
+    color: #7c3aed !important;
+    font-size: 13px !important;
+}
+
+/* ===== TABLE ===== */
+.table thead th {
+    font-family: 'Inter', sans-serif !important;
+    background: #f3f0fb !important;
+    color: #6d28d9 !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1.2px !important;
+    border: none !important;
+    padding: 14px 12px !important;
+}
+
+.table tbody td {
+    font-family: 'Inter', sans-serif !important;
+    color: #1e1040 !important;
+    font-size: 14px !important;
+    vertical-align: middle !important;
+    border-color: #f0ebff !important;
+}
+
+.table tbody tr:hover td {
+    background: #faf7ff !important;
+}
+
+/* ===== BUTTONS ===== */
+.btn-primary {
+    background: #6d28d9 !important;
+    border-color: #6d28d9 !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.3px !important;
+}
+
+.btn-primary:hover {
+    background: #5b21b6 !important;
+    border-color: #5b21b6 !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(109, 40, 217, 0.3) !important;
+}
+
+.btn-warning {
+    background: #8b5cf6 !important;
+    border-color: #8b5cf6 !important;
+    color: #ffffff !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 600 !important;
+}
+
+.btn-warning:hover {
+    background: #7c3aed !important;
+    border-color: #7c3aed !important;
+    color: #ffffff !important;
+}
+
+.btn-danger {
+    background: #dc2626 !important;
+    border-color: #dc2626 !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 600 !important;
+}
+
+.btn-danger:hover {
+    background: #b91c1c !important;
+    border-color: #b91c1c !important;
+}
+
+.btn-secondary {
+    background: #ede9fe !important;
+    border-color: #ede9fe !important;
+    color: #5b21b6 !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 600 !important;
+}
+
+.btn-secondary:hover {
+    background: #ddd6fe !important;
+    border-color: #ddd6fe !important;
+    color: #4c1d95 !important;
+}
+
+.btn-rounded {
+    border-radius: 50px !important;
+    padding: 6px 18px !important;
+}
+
+/* ===== FORM CONTROLS ===== */
+.form-control {
+    font-family: 'Inter', sans-serif !important;
+    border: 1.5px solid #ddd6fe !important;
+    border-radius: 8px !important;
+    color: #1e1040 !important;
+    transition: all 0.2s ease !important;
+}
+
+.form-control:focus {
+    border-color: #7c3aed !important;
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.12) !important;
+}
+
+/* ===== PAGINATION ===== */
+.page-item.active .page-link {
+    background-color: #6d28d9 !important;
+    border-color: #6d28d9 !important;
+}
+
+.page-link {
+    color: #6d28d9 !important;
+    font-family: 'Inter', sans-serif !important;
+}
+
+.page-link:hover {
+    background-color: #ede9fe !important;
+    color: #4c1d95 !important;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    background: #ffffff !important;
+    border-top: 2px solid #ede9fe !important;
+    font-family: 'Inter', sans-serif !important;
+    color: #7c3aed !important;
+    font-size: 13px !important;
+}
+
+/* ===== SEARCH BAR ===== */
+.nav-search .form-control {
+    border-radius: 50px !important;
+    border: 1.5px solid #ede9fe !important;
+    font-size: 13px !important;
+}
+
+.nav-search .input-group-text {
+    border-radius: 0 50px 50px 0 !important;
+    background: #ede9fe !important;
+    border-color: #ede9fe !important;
+    color: #6d28d9 !important;
+}
+
+/* ===== NOTIFICATION BADGE ===== */
+.notification {
+    background: #6d28d9 !important;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+    background: rgba(109, 40, 217, 0.25);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #7c3aed;
+}

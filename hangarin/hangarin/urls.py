@@ -20,7 +20,7 @@ from tasks.views import HomePageView, TaskList, TaskCreateView, TaskUpdateView, 
 from tasks.views import SubTaskList, SubTaskCreateView, SubTaskUpdateView, SubTaskDeleteView
 from tasks.views import CategoryList, CategoryCreateView, CategoryUpdateView, CategoryDeleteView
 from tasks.views import NotesList, NotesCreateView, NotesUpdateView, NotesDeleteView
-
+from tasks.views import PriorityList, PriorityCreateView, PriorityUpdateView, PriorityDeleteView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -51,5 +51,11 @@ urlpatterns = [
     path('notes_list/add', NotesCreateView.as_view(), name = 'notes-add'),
     path('notes_list/<pk>', NotesUpdateView.as_view(), name='notes-update'),
     path('notes_list/<pk>/delete', NotesDeleteView.as_view(), name='notes-delete'),
+   
+    # Priority
+    path('priority_list', PriorityList.as_view(), name = 'priority-list'),
+    path('priority_list/add', PriorityCreateView.as_view(), name = 'priority-add'),
+    path('priority_list/<pk>', PriorityUpdateView.as_view(), name='priority-update'),
+    path('priority_list/<pk>/delete', PriorityDeleteView.as_view(), name='priority-delete'),
    
 ]
