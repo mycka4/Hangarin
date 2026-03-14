@@ -19,6 +19,8 @@ from django.urls import path
 from tasks.views import HomePageView, TaskList, TaskCreateView, TaskUpdateView, TaskDeleteView
 from tasks.views import SubTaskList, SubTaskCreateView, SubTaskUpdateView, SubTaskDeleteView
 from tasks.views import CategoryList, CategoryCreateView, CategoryUpdateView, CategoryDeleteView
+from tasks.views import NotesList, NotesCreateView, NotesUpdateView, NotesDeleteView
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -44,5 +46,10 @@ urlpatterns = [
     path('category_list/<pk>', CategoryUpdateView.as_view(), name='category-update'),
     path('category_list/<pk>/delete', CategoryDeleteView.as_view(), name='category-delete'),
     
+    # Notes
+    path('notes_list', NotesList.as_view(), name = 'notes-list'),
+    path('notes_list/add', NotesCreateView.as_view(), name = 'notes-add'),
+    path('notes_list/<pk>', NotesUpdateView.as_view(), name='notes-update'),
+    path('notes_list/<pk>/delete', NotesUpdateView.as_view(), name='notes-delete'),
    
 ]

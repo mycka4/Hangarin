@@ -1,0 +1,50 @@
+{% extends 'base.html' %}{% load static %}
+{% block title %}Notes - Hangarin{% endblock %}
+{% block nav_notes %}active{% endblock %}
+{% block content %}
+<div class="content"><div class="container-fluid">
+    <h4 class="page-title">Notes</h4>
+    <div class="row"><div class="col-md-12"><div class="card">
+        <div class="card-header">
+            <div class="card-title">List of Notes</div>
+            <div class="card-category">Manage all notes</div>
+        </div>
+        <br>
+        <div class="col-md-12 row">
+            <div class="col-md-6">
+                <form class="navbar-left navbar-form nav-search mr-md-3" action="">
+                    <div class="input-group">
+                        <input type="text" placeholder="Search ..." class="form-control" />
+                        <div class="input-group-append"><span class="input-group-text"><i class="la la-search search-icon"></i></span></div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6"><div class="pull-right">
+                <a href="{% url 'notes-add' %}" class="btn btn-primary btn-rounded"><i class="la la-plus"></i> Add Note</a>
+            </div></div>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover mt-3">
+                <thead><tr><th>#</th><th>Task</th><th>Content</th><th>Created</th><th>Action</th></tr></thead>
+                <tbody>
+                    {% for obj in notes %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ obj.task }}</td>
+                        <td>{{ obj.content|truncatechars:60 }}</td>
+                        <td>{{ obj.created_at|date:"M d, Y" }}</td>
+                        <td>
+                            <a href="{% url 'notes-update' obj.id %}" class="btn btn-sm btn-warning btn-rounded">Edit</a>
+                            <a href="{% url 'notes-delete' obj.id %}" class="btn btn-sm btn-danger btn-rounded">Delete</a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr><td colspan="5" class="text-center">No notes found.</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% include 'includes/pagination.html' %}
+        </div>
+    </div></div></div>
+</div></div>
+{% endblock %}
