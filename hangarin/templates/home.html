@@ -12,20 +12,19 @@
         <!-- ===== STAT CARDS ===== -->
         <div class="row">
 
-            <!-- Total Tasks -->
             <div class="col-md-3">
-                <div class="card card-stats" style="background: linear-gradient(135deg, #3b1f6e, #7c3aed); border-radius:12px; border:none;">
+                <div class="card card-stats card-primary">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-5">
                                 <div class="icon-big text-center">
-                                    <i class="la la-tasks" style="color: rgba(255,255,255,0.85);"></i>
+                                    <i class="la la-tasks"></i>
                                 </div>
                             </div>
                             <div class="col-7 d-flex align-items-center">
                                 <div class="numbers">
-                                    <p class="card-category" style="color: rgba(255,255,255,0.85);">Total Tasks</p>
-                                    <h4 class="card-title" style="color: #ffffff;">{{ total_tasks }}</h4>
+                                    <p class="card-category">Total Tasks</p>
+                                    <h4 class="card-title">{{ total_tasks }}</h4>
                                 </div>
                             </div>
                         </div>
@@ -33,20 +32,19 @@
                 </div>
             </div>
 
-            <!-- Completed -->
             <div class="col-md-3">
-                <div class="card card-stats" style="background: linear-gradient(135deg, #5b21b6, #8b5cf6); border-radius:12px; border:none;">
+                <div class="card card-stats card-success">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-5">
                                 <div class="icon-big text-center">
-                                    <i class="la la-check-circle" style="color: rgba(255,255,255,0.85);"></i>
+                                    <i class="la la-check-circle"></i>
                                 </div>
                             </div>
                             <div class="col-7 d-flex align-items-center">
                                 <div class="numbers">
-                                    <p class="card-category" style="color: rgba(255,255,255,0.85);">Completed</p>
-                                    <h4 class="card-title" style="color: #ffffff;">{{ completed_tasks }}</h4>
+                                    <p class="card-category">Completed</p>
+                                    <h4 class="card-title">{{ completed_tasks }}</h4>
                                 </div>
                             </div>
                         </div>
@@ -54,20 +52,19 @@
                 </div>
             </div>
 
-            <!-- In Progress -->
             <div class="col-md-3">
-                <div class="card card-stats" style="background: linear-gradient(135deg, #6d28d9, #a78bfa); border-radius:12px; border:none;">
+                <div class="card card-stats card-warning">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-5">
                                 <div class="icon-big text-center">
-                                    <i class="la la-spinner" style="color: rgba(255,255,255,0.85);"></i>
+                                    <i class="la la-spinner"></i>
                                 </div>
                             </div>
                             <div class="col-7 d-flex align-items-center">
                                 <div class="numbers">
-                                    <p class="card-category" style="color: rgba(255,255,255,0.85);">In Progress</p>
-                                    <h4 class="card-title" style="color: #ffffff;">{{ inprogress_tasks }}</h4>
+                                    <p class="card-category">In Progress</p>
+                                    <h4 class="card-title">{{ inprogress_tasks }}</h4>
                                 </div>
                             </div>
                         </div>
@@ -75,20 +72,19 @@
                 </div>
             </div>
 
-            <!-- Pending -->
             <div class="col-md-3">
-                <div class="card card-stats" style="background: linear-gradient(135deg, #4c1d95, #c084fc); border-radius:12px; border:none;">
+                <div class="card card-stats card-danger">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-5">
                                 <div class="icon-big text-center">
-                                    <i class="la la-clock-o" style="color: rgba(255,255,255,0.85);"></i>
+                                    <i class="la la-clock-o"></i>
                                 </div>
                             </div>
                             <div class="col-7 d-flex align-items-center">
                                 <div class="numbers">
-                                    <p class="card-category" style="color: rgba(255,255,255,0.85);">Pending</p>
-                                    <h4 class="card-title" style="color: #ffffff;">{{ pending_tasks }}</h4>
+                                    <p class="card-category">Pending</p>
+                                    <h4 class="card-title">{{ pending_tasks }}</h4>
                                 </div>
                             </div>
                         </div>
@@ -97,62 +93,7 @@
             </div>
 
         </div>
-
-        <!-- ===== RECENT TASKS TABLE ===== -->
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-title">Recent Tasks</div>
-                        <div class="card-category">Overview of all tasks</div>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Title</th>
-                                        <th>Status</th>
-                                        <th>Deadline</th>
-                                        <th>Priority</th>
-                                        <th>Category</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {% for task in home %}
-                                    <tr>
-                                        <td>{{ forloop.counter }}</td>
-                                        <td>{{ task.title }}</td>
-                                        <td>
-                                            {% if task.status == 'Completed' %}
-                                                <span style="background:#ede9fe; color:#5b21b6; padding:4px 12px; border-radius:20px; font-size:11px; font-weight:700;">Completed</span>
-                                            {% elif task.status == 'In Progress' %}
-                                                <span style="background:#ddd6fe; color:#6d28d9; padding:4px 12px; border-radius:20px; font-size:11px; font-weight:700;">In Progress</span>
-                                            {% else %}
-                                                <span style="background:#c4b5fd; color:#4c1d95; padding:4px 12px; border-radius:20px; font-size:11px; font-weight:700;">Pending</span>
-                                            {% endif %}
-                                        </td>
-                                        <td>{{ task.deadline|date:"M d, Y" }}</td>
-                                        <td>{{ task.priority }}</td>
-                                        <td>{{ task.category }}</td>
-                                    </tr>
-                                    {% empty %}
-                                    <tr>
-                                        <td colspan="6" class="text-center">No tasks found.</td>
-                                    </tr>
-                                    {% endfor %}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <hr>
-                        Total of {{ total_tasks }} task(s) recorded.
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!-- END STAT CARDS -->
 
     </div>
 </div>
