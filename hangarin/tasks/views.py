@@ -2,8 +2,8 @@ from django.shortcuts import render
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from tasks.models import Task, SubTask, Category 
-from tasks.forms import TaskForm, SubTaskForm, CategoryForm
+from tasks.models import Task, SubTask, Category, Note
+from tasks.forms import TaskForm, SubTaskForm, CategoryForm, NotesForm
 
 class HomePageView(ListView):
     model = Task
@@ -23,6 +23,7 @@ class TaskList(ListView):
     context_object_name = 'tasks'
     template_name = 'task_list.html'
     paginate_by = 5
+    ordering = ['-created_at']
 
 class TaskCreateView(CreateView):
     model = Task
@@ -46,6 +47,7 @@ class SubTaskList(ListView):
     context_object_name = 'subtasks'
     template_name = 'subtask_list.html'
     paginate_by = 5
+    ordering = ['-created_at']
 
 class SubTaskCreateView(CreateView):
     model = SubTask
@@ -69,6 +71,7 @@ class CategoryList(ListView):
     context_object_name = 'categories'
     template_name = 'category_list.html'
     paginate_by = 5
+    ordering = ['-created_at']
 
 class CategoryCreateView(CreateView):
     model =  Category
@@ -87,7 +90,29 @@ class CategoryDeleteView(DeleteView):
     template_name = 'category_del.html'
     success_url = reverse_lazy('category-list')
 
+class NotesList(ListView):
+    model = Note
+    context_object_name = 'notes'
+    template_name = 'notes_list.html'
+    paginate_by = 5
+    ordering = ['-created_at']
 
+class NotesCreateView(CreateView):
+    model =  Note
+    form_class = NotesForm
+    template_name = 'notes_form.html'
+    success_url = reverse_lazy('notes-list')
+
+class NotesUpdateView(UpdateView):
+    model =  Note
+    form_class = NotesForm
+    template_name = 'notes_form.html'
+    success_url = reverse_lazy('notes-list')
+
+class NotesDeleteView(DeleteView):
+    model = Note
+    template_name = 'notes_del.html'
+    success_url = reverse_lazy('notes-list')
 
 
 
