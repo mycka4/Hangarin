@@ -50,6 +50,6 @@ urlpatterns = [
     path('notes_list', NotesList.as_view(), name = 'notes-list'),
     path('notes_list/add', NotesCreateView.as_view(), name = 'notes-add'),
     path('notes_list/<pk>', NotesUpdateView.as_view(), name='notes-update'),
-    path('notes_list/<pk>/delete', NotesUpdateView.as_view(), name='notes-delete'),
+    path('notes_list/<pk>/delete', NotesDeleteView.as_view(), name='notes-delete'),
    
 ]
