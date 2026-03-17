@@ -89,6 +89,12 @@ body {
     color: #ffffff !important;
 }
 
+.sidebar .nav .nav-item:nth-child(3) {
+    margin-top: 20px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    padding-top: 10px !important;
+}
+
 /* ===== MAIN HEADER ===== */
 .main-header {
     background: #ffffff !important;

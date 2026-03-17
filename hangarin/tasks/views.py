@@ -27,7 +27,41 @@ class TaskList(ListView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
+
+        query = self.request.GET.get('q', '')
+        if query:
+            queryset = queryset.filter(title__icontains=query)
+
+        status = self.request.GET.get('status', '')
+        if status:
+            queryset = queryset.filter(status=status)
         
+        priority = self.request.GET.get('priority', '')
+        if priority:
+            queryset = queryset.filter(priority__name=priority)
+
+        category = self.request.GET.get('category', '')
+        if category:
+            queryset = queryset.filter(category__name=category)
+        
+        sort = self.request.GET.get('sort', '-created_at')
+        valid_sorts = ['title', '-title', 'deadline', '-deadline', 'status', '-status', 'created_at', '-created_at']
+        if sort in valid_sorts:
+            queryset = queryset.order_by(sort)
+ 
+        return queryset
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['q'] = self.request.GET.get('q', '')
+        context['selected_status'] = self.request.GET.get('status', '')
+        context['selected_priority'] = self.request.GET.get('priority', '')
+        context['selected_category'] = self.request.GET.get('category', '')
+        context['selected_sort'] = self.request.GET.get('sort', '-created_at')
+        context['priorities'] = Priority.objects.all()
+        context['categories'] = Category.objects.all()
+        return context
+
 
 class TaskCreateView(CreateView):
     model = Task
@@ -52,6 +86,9 @@ class SubTaskList(ListView):
     template_name = 'subtask_list.html'
     paginate_by = 5
     ordering = ['-created_at']
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
 
 class SubTaskCreateView(CreateView):
     model = SubTask
