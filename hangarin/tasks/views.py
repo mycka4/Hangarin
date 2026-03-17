@@ -25,6 +25,10 @@ class TaskList(ListView):
     paginate_by = 5
     ordering = ['-created_at']
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        
+
 class TaskCreateView(CreateView):
     model = Task
     form_class = TaskForm
