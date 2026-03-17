@@ -9,30 +9,29 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" href="{% static 'css/ready.css' %}">
     <link rel="stylesheet" href="{% static 'css/demo.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">  ← ADD THIS
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <div class="wrapper">
 
         <!-- ===== SIDEBAR ===== -->
         <div class="sidebar">
-            <div class="scrollbar-inner sidebar-wrapper">
-                <div class="user">
-                    <div class="photo">
-                        <img src="{% static 'img/profile.jpg' %}">
-                    </div>
-                    <div class="info">
-                        <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
-                            <span>
-                                Admin
-                                <span class="user-level">Administrator</span>
-                                <span class="caret"></span>
-                            </span>
-                        </a>
-                    </div>
+            <div class="scrollbar-inner sidebar-wrapper" style="display:flex; flex-direction:column; height:100%;">
+
+                <!-- ===== LOGO ===== -->
+                <div style="padding: 24px 20px 16px;">
+                    <span style="font-family:'Playfair Display',serif; font-size:22px; font-weight:800; color:#ffffff; letter-spacing:1px;">Hangarin</span>
+                    <p style="color:rgba(255,255,255,0.4); font-size:10px; margin:0; letter-spacing:2px; text-transform:uppercase;">Task Manager</p>
                 </div>
 
-                <ul class="nav">
+                <!-- ===== NAV LINKS ===== -->
+                <ul class="nav" style="flex:1;">
+
+                    <!-- Main -->
+                    <li style="padding: 6px 20px 4px;">
+                        <span style="color:rgba(255,255,255,0.3); font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase;">Main</span>
+                    </li>
+
                     <li class="nav-item {% block nav_dashboard %}{% endblock %}">
                         <a href="{% url 'home' %}">
                             <i class="la la-home"></i>
@@ -40,18 +39,19 @@
                         </a>
                     </li>
                     <li class="nav-item {% block nav_tasks %}{% endblock %}">
-                        <a href="{% url 'task-list'  %}">
+                        <a href="{% url 'task-list' %}">
                             <i class="la la-tasks"></i>
-                            <p>All Tasks</p>
+                            <p>Tasks</p>
                         </a>
                     </li>
-                    
-                    <li style="margin: 15px 15px 5px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 12px;">
-                        <span style="color: rgba(255,255,255,0.3); font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding-left:15px;">Details</span>
+
+                    <!-- Details -->
+                    <li style="padding: 16px 20px 4px; margin-top:8px; border-top: 1px solid rgba(255,255,255,0.08);">
+                        <span style="color:rgba(255,255,255,0.3); font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase;">Details</span>
                     </li>
 
                     <li class="nav-item {% block nav_subtasks %}{% endblock %}">
-                        <a href="{% url 'subtask-list'  %}">
+                        <a href="{% url 'subtask-list' %}">
                             <i class="la la-list"></i>
                             <p>Subtasks</p>
                         </a>
@@ -74,14 +74,28 @@
                             <p>Priorities</p>
                         </a>
                     </li>
+
                 </ul>
+
+                <!-- ===== ADMIN PROFILE AT BOTTOM ===== -->
+                <div style="padding: 16px 20px; border-top: 1px solid rgba(255,255,255,0.08); display:flex; align-items:center; gap:12px;">
+                    <img src="{% static 'img/profile.jpg' %}" alt="user" style="width:36px; height:36px; border-radius:50%; border:2px solid rgba(167,139,250,0.5);">
+                    <div>
+                        <p style="margin:0; color:#ffffff; font-size:13px; font-weight:600; font-family:'Playfair Display',serif;">Admin</p>
+                        <p style="margin:0; color:rgba(255,255,255,0.4); font-size:10px; text-transform:uppercase; letter-spacing:1px;">Administrator</p>
+                    </div>
+                    <a href="/admin" style="margin-left:auto; color:rgba(255,255,255,0.4); font-size:18px;" title="Go to Admin">
+                        <i class="la la-cog"></i>
+                    </a>
+                </div>
+
             </div>
         </div>
 
         <!-- ===== MAIN PANEL ===== -->
         <div class="main-panel">
 
-            <!-- ===== MAIN HEADER (inside main-panel) ===== -->
+            <!-- ===== MAIN HEADER ===== -->
             <div class="main-header">
                 <div class="logo-header">
                     <a href="/" class="logo">Hangarin</a>
@@ -93,9 +107,11 @@
 
                 <nav class="navbar navbar-header navbar-expand-lg">
                     <div class="container-fluid">
+
+                        <!-- Search Bar -->
                         <form class="navbar-left navbar-form nav-search mr-md-3" action="">
                             <div class="input-group">
-                                <input type="text" placeholder="Search ..." class="form-control">
+                                <input type="text" placeholder="Search tasks, notes ..." class="form-control">
                                 <div class="input-group-append">
                                     <span class="input-group-text">
                                         <i class="la la-search search-icon"></i>
@@ -105,6 +121,16 @@
                         </form>
 
                         <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+
+                            <!-- Date Display -->
+                            <li class="nav-item" style="margin-right:15px;">
+                                <span style="font-size:12px; color:#7c3aed; font-family:'Inter',sans-serif; font-weight:500;">
+                                    <i class="la la-calendar" style="margin-right:4px;"></i>
+                                    <span id="current-date"></span>
+                                </span>
+                            </li>
+
+                            <!-- Notification -->
                             <li class="nav-item dropdown hidden-caret">
                                 <a class="nav-link dropdown-toggle" href="#" id="notifDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="la la-bell"></i>
@@ -145,6 +171,7 @@
                                 </ul>
                             </li>
 
+                            <!-- Profile -->
                             <li class="nav-item dropdown">
                                 <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
                                     <img src="{% static 'img/profile.jpg' %}" alt="user-img" width="36" class="img-circle">
@@ -169,11 +196,11 @@
                                     <a class="dropdown-item" href="#"><i class="fa fa-power-off"></i> Logout</a>
                                 </ul>
                             </li>
+
                         </ul>
                     </div>
                 </nav>
             </div>
-            <!-- END MAIN HEADER -->
 
             <!-- ===== PAGE CONTENT ===== -->
             {% block content %}
@@ -189,10 +216,8 @@
             </footer>
 
         </div>
-        <!-- END MAIN PANEL -->
 
     </div>
-    <!-- END WRAPPER -->
 
     <script src="{% static 'js/core/jquery.3.2.1.min.js' %}"></script>
     <script src="{% static 'js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js' %}"></script>
@@ -204,5 +229,13 @@
     <script src="{% static 'js/plugin/bootstrap-toggle/bootstrap-toggle.min.js' %}"></script>
     <script src="{% static 'js/plugin/jquery-scrollbar/jquery.scrollbar.min.js' %}"></script>
     <script src="{% static 'js/ready.min.js' %}"></script>
+
+    <!-- Date Script -->
+    <script>
+        const d = new Date();
+        const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+        document.getElementById('current-date').textContent = d.toLocaleDateString('en-US', options);
+    </script>
+
 </body>
 </html>

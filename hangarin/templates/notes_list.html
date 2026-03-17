@@ -1,50 +1,98 @@
-{% extends 'base.html' %}{% load static %}
+{% extends 'base.html' %}
+{% load static %}
 {% block title %}Notes - Hangarin{% endblock %}
 {% block nav_notes %}active{% endblock %}
+
 {% block content %}
-<div class="content"><div class="container-fluid">
-    <h4 class="page-title">Notes</h4>
-    <div class="row"><div class="col-md-12"><div class="card">
-        <div class="card-header">
-            <div class="card-title">List of Notes</div>
-            <div class="card-category">Manage all notes</div>
-        </div>
-        <br>
-        <div class="col-md-12 row">
-            <div class="col-md-6">
-                <form class="navbar-left navbar-form nav-search mr-md-3" action="">
-                    <div class="input-group">
-                        <input type="text" placeholder="Search ..." class="form-control" />
-                        <div class="input-group-append"><span class="input-group-text"><i class="la la-search search-icon"></i></span></div>
+<div class="content">
+    <div class="container-fluid">
+        <h4 class="page-title">Notes</h4>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">List of Notes</div>
+                        <div class="card-category">Manage all notes</div>
                     </div>
-                </form>
+
+                    <br>
+
+                    <div class="col-md-12">
+                        <form method="GET" action="{% url 'notes-list' %}">
+                            <div class="row align-items-end mb-3">
+
+                                <div class="col-md-4">
+                                    <label style="font-size:11px; font-weight:700; color:#6d28d9; text-transform:uppercase; letter-spacing:1px;">Search</label>
+                                    <div class="input-group">
+                                        <input type="text" name="q" value="{{ q }}" placeholder="Search notes ..." class="form-control" />
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"><i class="la la-search"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label style="font-size:11px; font-weight:700; color:#6d28d9; text-transform:uppercase; letter-spacing:1px;">Created Date</label>
+                                    <input type="date" name="created_at" value="{{ selected_date }}" class="form-control" />
+                                </div>
+
+                                <div class="col-md-2 d-flex align-items-end" style="gap:6px;">
+                                    <button type="submit" class="btn btn-primary btn-rounded">
+                                        <i class="la la-filter"></i> Filter
+                                    </button>
+                                    <a href="{% url 'notes-list' %}" class="btn btn-secondary btn-rounded">
+                                        <i class="la la-times"></i>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="col-md-12 mb-2">
+                        <div class="pull-right">
+                            <a href="{% url 'notes-add' %}" class="btn btn-primary btn-rounded">
+                                <i class="la la-plus"></i> Add Note
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <table class="table table-hover mt-2">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Task</th>
+                                    <th>Content</th>
+                                    <th>Created</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for obj in notes %}
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ obj.task }}</td>
+                                    <td>{{ obj.content|truncatechars:60 }}</td>
+                                    <td>{{ obj.created_at|date:"M d, Y" }}</td>
+                                    <td>
+                                        <a href="{% url 'notes-update' obj.id %}" class="btn btn-sm btn-warning btn-rounded">Edit</a>
+                                        <a href="{% url 'notes-delete' obj.id %}" class="btn btn-sm btn-danger btn-rounded">Delete</a>
+                                    </td>
+                                </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="5" class="text-center">No notes found.</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        {% include 'includes/pagination.html' %}
+                    </div>
+
+                </div>
             </div>
-            <div class="col-md-6"><div class="pull-right">
-                <a href="{% url 'notes-add' %}" class="btn btn-primary btn-rounded"><i class="la la-plus"></i> Add Note</a>
-            </div></div>
         </div>
-        <div class="card-body">
-            <table class="table table-hover mt-3">
-                <thead><tr><th>#</th><th>Task</th><th>Content</th><th>Created</th><th>Action</th></tr></thead>
-                <tbody>
-                    {% for obj in notes %}
-                    <tr>
-                        <td>{{ forloop.counter }}</td>
-                        <td>{{ obj.task }}</td>
-                        <td>{{ obj.content|truncatechars:60 }}</td>
-                        <td>{{ obj.created_at|date:"M d, Y" }}</td>
-                        <td>
-                            <a href="{% url 'notes-update' obj.id %}" class="btn btn-sm btn-warning btn-rounded">Edit</a>
-                            <a href="{% url 'notes-delete' obj.id %}" class="btn btn-sm btn-danger btn-rounded">Delete</a>
-                        </td>
-                    </tr>
-                    {% empty %}
-                    <tr><td colspan="5" class="text-center">No notes found.</td></tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            {% include 'includes/pagination.html' %}
-        </div>
-    </div></div></div>
-</div></div>
+    </div>
+</div>
 {% endblock %}
