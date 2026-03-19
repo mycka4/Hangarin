@@ -2038,7 +2038,7 @@ body {
 
 .main-header {
   min-height: 55px;
-  width: 100%;
+  width: 82%;
   background: #ffffff;
   position: fixed;
   z-index: 1001;
@@ -5697,7 +5697,7 @@ body {
   background-color: #dc2626;
   text-align: center;
   border-radius: 10px;
-  min-width: 15px;
+  min-width: 17px;
   height: 17px;
   font-size: 11px;
   color: #ffffff;
@@ -5708,7 +5708,7 @@ body {
 }
 
 .navbar-header {
-  padding: 0px 250px;
+  padding: 0px 15px;
 }
 .navbar-header .dropdown-toggle {
   line-height: 55px;
@@ -6537,7 +6537,7 @@ body {
     border-bottom-width: 0px;
   }
 }
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 900px) {
   .main-header .logo-header {
     line-height: 52px;
   }
@@ -6648,7 +6648,7 @@ body {
   }
 
   .navbar-header .navbar-nav {
-    width: 100%;
+    width: 80%;
     flex-direction: row;
     justify-content: center;
     margin-left: 0px !important;
