@@ -4,154 +4,146 @@
 {% block nav_tasks %}active{% endblock %}
 
 {% block content %}
-<div class="content">
-    <div class="container-fluid">
-        <h4 class="page-title">Tasks</h4>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-title">List of Tasks</div>
-                        <div class="card-category">Manage all your tasks</div>
-                    </div>
 
-                    <br>
+<!-- Page Title -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="overview-wrap">
+            <h2 class="title-1">Tasks</h2>
+        </div>
+    </div>
+</div>
 
-                    <!-- ===== SEARCH & FILTERS ===== -->
-                    <div class="col-md-12">
-                        <form method="GET" action="{% url 'task-list' %}">
-                            <div class="row align-items-end mb-3">
+<!-- Main Card -->
+<div class="row m-t-25">
+    <div class="col-md-12">
+        <div class="au-card">
+            <div class="au-card-inner">
 
-                                <!-- Search -->
-                                <div class="col-md-3">
-                                    <label style="font-size:11px; font-weight:700; color:#6d28d9; text-transform:uppercase; letter-spacing:1px;">Search</label>
-                                    <div class="input-group">
-                                        <input type="text" name="q" value="{{ q }}" placeholder="Search tasks ..." class="form-control" />
-                                        <div class="input-group-append">
-                                            <span class="input-group-text"><i class="la la-search"></i></span>
-                                        </div>
+                <!-- Card Header -->
+                <h3 class="title-2">Manage your Tasks</h3><br>
+
+                            <form method="GET" action="{% url 'task-list' %}">
+                                <div class="row align-items-end mb-3">
+
+                                    <div class="col-md-3">
+                                        <label style="font-size:11px; font-weight:700; color:#662549; text-transform:uppercase; letter-spacing:1px;">Search</label>
+                                        <input type="text" name="q" value="{{ q }}" placeholder="Search tasks ..." class="au-input au-input--full" />
                                     </div>
-                                </div>
 
-                                <!-- Status Filter -->
-                                <div class="col-md-2">
-                                    <label style="font-size:11px; font-weight:700; color:#6d28d9; text-transform:uppercase; letter-spacing:1px;">Status</label>
-                                    <select name="status" class="form-control">
-                                        <option value="">All Status</option>
-                                        <option value="Pending" {% if selected_status == 'Pending' %}selected{% endif %}>Pending</option>
-                                        <option value="In Progress" {% if selected_status == 'In Progress' %}selected{% endif %}>In Progress</option>
-                                        <option value="Completed" {% if selected_status == 'Completed' %}selected{% endif %}>Completed</option>
-                                    </select>
-                                </div>
+                                    <div class="col-md-2">
+                                        <label style="font-size:11px; font-weight:700; color:#662549; text-transform:uppercase; letter-spacing:1px;">Status</label>
+                                        <select name="status" class="au-input au-input--full">
+                                            <option value="">All Status</option>
+                                            <option value="Pending" {% if selected_status == 'Pending' %}selected{% endif %}>Pending</option>
+                                            <option value="In Progress" {% if selected_status == 'In Progress' %}selected{% endif %}>In Progress</option>
+                                            <option value="Completed" {% if selected_status == 'Completed' %}selected{% endif %}>Completed</option>
+                                        </select>
+                                    </div>
 
-                                <!-- Priority Filter -->
-                                <div class="col-md-2">
-                                    <label style="font-size:11px; font-weight:700; color:#6d28d9; text-transform:uppercase; letter-spacing:1px;">Priority</label>
-                                    <select name="priority" class="form-control">
-                                        <option value="">All Priorities</option>
-                                        {% for p in priorities %}
-                                        <option value="{{ p.name }}" {% if selected_priority == p.name %}selected{% endif %}>{{ p.name }}</option>
-                                        {% endfor %}
-                                    </select>
-                                </div>
+                                    <div class="col-md-2">
+                                        <label style="font-size:11px; font-weight:700; color:#662549; text-transform:uppercase; letter-spacing:1px;">Priority</label>
+                                        <select name="priority" class="au-input au-input--full">
+                                            <option value="">All Priorities</option>
+                                            {% for p in priorities %}
+                                            <option value="{{ p.name }}" {% if selected_priority == p.name %}selected{% endif %}>{{ p.name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
 
-                                <!-- Category Filter -->
-                                <div class="col-md-2">
-                                    <label style="font-size:11px; font-weight:700; color:#6d28d9; text-transform:uppercase; letter-spacing:1px;">Category</label>
-                                    <select name="category" class="form-control">
-                                        <option value="">All Categories</option>
-                                        {% for c in categories %}
-                                        <option value="{{ c.name }}" {% if selected_category == c.name %}selected{% endif %}>{{ c.name }}</option>
-                                        {% endfor %}
-                                    </select>
-                                </div>
+                                    <div class="col-md-2">
+                                        <label style="font-size:11px; font-weight:700; color:#662549; text-transform:uppercase; letter-spacing:1px;">Category</label>
+                                        <select name="category" class="au-input au-input--full">
+                                            <option value="">All Categories</option>
+                                            {% for c in categories %}
+                                            <option value="{{ c.name }}" {% if selected_category == c.name %}selected{% endif %}>{{ c.name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
 
-                                <!-- Sort -->
-                                <div class="col-md-1">
-                                    <label style="font-size:11px; font-weight:700; color:#6d28d9; text-transform:uppercase; letter-spacing:1px;">Sort By</label>
-                                    <select name="sort" class="form-control">
-                                        <option value="-created_at" {% if selected_sort == '-created_at' %}selected{% endif %}>Newest First</option>
-                                        <option value="created_at" {% if selected_sort == 'created_at' %}selected{% endif %}>Oldest First</option>
-                                        <option value="title" {% if selected_sort == 'title' %}selected{% endif %}>Title A-Z</option>
-                                        <option value="-title" {% if selected_sort == '-title' %}selected{% endif %}>Title Z-A</option>
-                                        <option value="deadline" {% if selected_sort == 'deadline' %}selected{% endif %}>Deadline Asc</option>
-                                        <option value="-deadline" {% if selected_sort == '-deadline' %}selected{% endif %}>Deadline Desc</option>
-                                        <option value="status" {% if selected_sort == 'status' %}selected{% endif %}>Status A-Z</option>
-                                    </select>
-                                </div>
+                                    <div class="col-md-2">
+                                        <label style="font-size:11px; font-weight:700; color:#662549; text-transform:uppercase; letter-spacing:1px;">Sort By</label>
+                                        <select name="sort" class="au-input au-input--full">
+                                            <option value="-created_at" {% if selected_sort == '-created_at' %}selected{% endif %}>Newest First</option>
+                                            <option value="created_at" {% if selected_sort == 'created_at' %}selected{% endif %}>Oldest First</option>
+                                            <option value="title" {% if selected_sort == 'title' %}selected{% endif %}>Title A-Z</option>
+                                            <option value="-title" {% if selected_sort == '-title' %}selected{% endif %}>Title Z-A</option>
+                                            <option value="deadline" {% if selected_sort == 'deadline' %}selected{% endif %}>Deadline Asc</option>
+                                            <option value="-deadline" {% if selected_sort == '-deadline' %}selected{% endif %}>Deadline Desc</option>
+                                            <option value="status" {% if selected_sort == 'status' %}selected{% endif %}>Status A-Z</option>
+                                        </select>
+                                    </div>
 
-                                <!-- Buttons -->
-                                <div class="col-md-1 d-flex align-items-end" style="gap:6px;">
-                                    <button type="submit" class="btn btn-primary btn-rounded">
-                                        <i class="la la-filter"></i>
-                                    </button>
-                                    <a href="{% url 'task-list' %}" class="btn btn-secondary btn-rounded">
-                                        <i class="la la-times"></i>
-                                    </a>
-                                </div>
+                                    <div class="col-md-1 d-flex align-items-end" style="gap:4px; padding-bottom:1px;">
+                                        <button type="submit" title="Filter"
+                                            style="background:#662549; color:#fff; border:none; border-radius:4px; padding:7px 10px; cursor:pointer;">
+                                            <i class="fas fa-filter"></i>
+                                        </button>
+                                        <a href="{% url 'task-list' %}" title="Clear"
+                                            style="background:#AE445A; color:#fff; border:none; border-radius:4px; padding:7px 10px; text-decoration:none;">
+                                            <i class="fas fa-times"></i>
+                                        </a>
+                                    </div>
 
-                            </div>
-                        </form>
                     </div>
+                </form>
 
-                    <!-- Add Button -->
-                    <div class="col-md-12 mb-2">
-                        <div class="pull-right">
-                            <a href="{% url 'task-add' %}" class="btn btn-primary btn-rounded">
-                                <i class="la la-plus"></i> Add Task
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- ===== TABLE ===== -->
-                    <div class="card-body">
-                        <table class="table table-hover mt-2">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Title</th>
-                                    <th>Status</th>
-                                    <th>Deadline</th>
-                                    <th>Priority</th>
-                                    <th>Category</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for task in tasks %}
-                                <tr>
-                                    <td>{{ forloop.counter }}</td>
-                                    <td>{{ task.title }}</td>
-                                    <td>
-                                        {% if task.status == 'Completed' %}
-                                            <span style="background:#ede9fe;color:#5b21b6;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;">Completed</span>
-                                        {% elif task.status == 'In Progress' %}
-                                            <span style="background:#ddd6fe;color:#6d28d9;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;">In Progress</span>
-                                        {% else %}
-                                            <span style="background:#c4b5fd;color:#4c1d95;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;">Pending</span>
-                                        {% endif %}
-                                    </td>
-                                    <td>{{ task.deadline|date:"M d, Y" }}</td>
-                                    <td>{{ task.priority }}</td>
-                                    <td>{{ task.category }}</td>
-                                    <td>
-                                        <a href="{% url 'task-update' task.id %}" class="btn btn-sm btn-warning btn-rounded">Edit</a>
-                                        <a href="{% url 'task-delete' task.id %}" class="btn btn-sm btn-danger btn-rounded">Delete</a>
-                                    </td>
-                                </tr>
-                                {% empty %}
-                                <tr>
-                                    <td colspan="7" class="text-center">No tasks found.</td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                        {% include 'includes/pagination.html' %}
-                    </div>
-
+                <div class="d-flex justify-content-end mb-3">
+                    <a href="{% url 'task-add' %}" class="au-btn au-btn-icon au-btn--blue">
+                        <i class="fas fa-plus"></i>Add Task
+                    </a>
                 </div>
+
+                <div class="table-responsive table--no-card">
+                    <table class="table table-borderless table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Title</th>
+                                <th>Status</th>
+                                <th>Deadline</th>
+                                <th>Priority</th>
+                                <th>Category</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for task in tasks %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ task.title }}</td>
+                                <td>
+                                    {% if task.status == 'Completed' %}
+                                        <span style="background:#d4edda;color:#155724;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;">Completed</span>
+                                    {% elif task.status == 'In Progress' %}
+                                        <span style="background:#fff3cd;color:#856404;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;">In Progress</span>
+                                    {% else %}
+                                        <span style="background:#f5e6ee;color:#662549;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;">Pending</span>
+                                    {% endif %}
+                                </td>
+                                <td>{{ task.deadline|date:"M d, Y" }}</td>
+                                <td>{{ task.priority }}</td>
+                                <td>{{ task.category }}</td>
+                                <td style="white-space:nowrap;">
+                                    <a href="{% url 'task-update' task.id %}" class="au-btn au-btn--blue" style="padding:5px 12px; font-size:12px; margin-right:4px;">Edit</a>
+                                    <a href="{% url 'task-delete' task.id %}" class="au-btn" style="background:#AE445A; color:#fff; padding:5px 12px; font-size:12px;">Delete</a>
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="7" class="text-center">No tasks found.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                {% include 'includes/pagination.html' %}
+
             </div>
         </div>
     </div>
 </div>
-{% endblock %}  
+
+{% endblock %}

@@ -6526,7 +6526,7 @@ body {
 }
 
 /*     Responsive     */
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 700px) {
   .row-card-no-pd [class*=col-] .card:after {
     width: 0px !important;
   }
@@ -6672,4 +6672,25 @@ body {
   }
 }
 
+/* ===== MOBILE TABLE FIX ===== */
+@media screen and (max-width: 991px) {
+  .table td, .table th {
+    padding: 0.4rem !important;
+    font-size: 12px !important;
+  }
+  .table td .btn {
+    display: block !important;
+    width: 100% !important;
+    margin: 2px 0 !important;
+    padding: 4px 6px !important;
+    font-size: 11px !important;
+  }
+  /* Hide less important columns on mobile */
+  .table th:nth-child(4),
+  .table td:nth-child(4),
+  .table th:nth-child(5),
+  .table td:nth-child(5) {
+    display: none !important;
+  }
+}
 /*# sourceMappingURL=ready.css.map */
