@@ -6526,7 +6526,7 @@ body {
 }
 
 /*     Responsive     */
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 500px) {
   .row-card-no-pd [class*=col-] .card:after {
     width: 0px !important;
   }
