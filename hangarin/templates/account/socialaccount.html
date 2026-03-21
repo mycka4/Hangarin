@@ -9,23 +9,86 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css" />
-    <style>
-        body {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background-color: #f8f9fc;
-        }
-        .auth-card {
-            max-width: 500px;
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            padding: 2rem;
-            text-align: center;
-        }
-    </style>
+
+<style>
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        font-family: "Segoe UI", sans-serif;
+
+        background: linear-gradient(
+            180deg,
+            #F39F5A 0%,
+            #AE445A 40%,
+            #662549 70%,
+            #451952 90%,
+            #1D1A39 100%
+        );
+    }
+
+    .auth-card {
+        max-width: 600px;
+        width: 100%;
+        padding: 2rem;
+        border-radius: 20px;
+
+        background: #E8BCB9;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+    }
+
+    .nav-pills .nav-link {
+        color: #451952;
+        font-weight: 600;
+        border-radius: 12px;
+    }
+
+    .nav-pills .nav-link.active {
+        background-color: #662549;
+        color: #fff;
+    }
+
+    .form-outline .form-control {
+        background-color: #fff;
+        border-radius: 10px;
+    }
+
+    .form-outline .form-control:focus {
+        border-color: #AE445A;
+        box-shadow: 0 0 0 0.15rem rgba(174, 68, 90, 0.25);
+    }
+
+    .btn-primary {
+        background-color: #AE445A;
+        border: none;
+        border-radius: 10px;
+        font-weight: 600;
+        transition: 0.3s;
+    }
+
+    .btn-primary:hover {
+        background-color: #662549;
+    }
+
+    .btn-floating {
+        color: #451952;
+        font-size: 18px;
+    }
+
+    .btn-floating:hover {
+        color: #AE445A;
+    }
+
+    a {
+        color: #451952;
+        font-weight: 500;
+    }
+
+    a:hover {
+        color: #AE445A;
+    }
+</style>
 </head>
 <body>
     <div class="auth-card">
