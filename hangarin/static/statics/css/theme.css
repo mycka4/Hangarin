@@ -1596,6 +1596,7 @@ section {
 .account-dropdown__footer a:hover {
     background: #662549;
     color: #fff;
+    
 }
 
 .account-dropdown__footer a i {
@@ -1754,7 +1755,6 @@ section {
     padding: 0;
     line-height: 1;
     vertical-align: top;
-    background: #fff;
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;

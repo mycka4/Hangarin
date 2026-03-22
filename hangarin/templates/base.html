@@ -145,9 +145,10 @@
                     <div class="container-fluid">
                         <div class="header-wrap">
 
-                            <!-- Search -->
-                            <form class="form-header" action="" method="GET">
-                                <input class="au-input au-input--xl" type="text" name="search" placeholder="Search tasks, notes ..." />
+
+                             <!-- Search -->
+                           <form class="form-header" action="{% url 'task-list' %}" method="GET">
+                                <input class="au-input au-input--xl" type="text" name="q" placeholder="Search tasks, notes ..." />
                                 <button class="au-btn--submit" type="submit">
                                     <i class="fas fa-search"></i>
                                 </button>
@@ -226,11 +227,11 @@
                                                 <div class="account-dropdown__item">
                                                     <a href="/admin">
                                                         <i class="fas fa-cog"></i>Admin Panel</a>
+                                                    <a href="{% url 'account_logout' %}">
+                                                        <i class="fas fa-power-off"></i>Logout</a>
+                                                        
                                                 </div>
-                                            </div>
-                                            <div class="account-dropdown__footer">
-                                                <a href="{% url 'account_logout' %}">
-                                                    <i class="fas fa-power-off"></i>Logout</a>
+                                            
                                             </div>
                                         </div>
                                     </div>
@@ -255,7 +256,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="copyright">
-                                    <p>2024, made with ❤ by <strong>Hangarin</strong></p>
+                                    <p>2026, made with ❤ by <strong>Hangarin</strong></p>
                                 </div>
                             </div>
                         </div>
@@ -268,7 +269,6 @@
         </div>
         <!-- END PAGE CONTAINER -->
 
-    </div>
 
     <!-- JS -->
     <script src="{% static 'statics/js/vanilla-utils.js' %}"></script>
@@ -279,13 +279,8 @@
     <script src="{% static 'statics/js/aos.js' %}"></script>
     <script src="{% static 'statics/js/modern-plugins.js' %}"></script>
 
-    <!-- Date Script -->
-    <script>
-        const d = new Date();
-        const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
-        const dateEl = document.getElementById('current-date');
-        if(dateEl) dateEl.textContent = d.toLocaleDateString('en-US', options);
-    </script>
+    
+    </div>
 
 </body>
 </html>
