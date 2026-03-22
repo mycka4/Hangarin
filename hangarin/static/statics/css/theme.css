@@ -1806,7 +1806,7 @@ section {
 }
 
 .header-mobile .navbar-mobile .navbar-mobile__list {
-    background: #f8f8f8;
+    background: #1D1A39;
 }
 
 .header-mobile .navbar-mobile .navbar-mobile__list > li > a {
@@ -14762,7 +14762,7 @@ a:hover {
 .menu-sidebar { background: #1D1A39 !important; }
 .menu-sidebar .logo { background: #160838 !important; border-bottom: 1px solid rgba(255,255,255,0.05) !important; }
 .menu-sidebar .logo a strong { color: #ffffff !important; }
-.menu-sidebar .logo a p { color: rgba(255,255,255,0.4) !important; }
+.menu-sidebar .logo a p { color: rgba(255,255,255,0.75) !important; }
 
 /* Sidebar nav links */
 .navbar-sidebar .navbar__list li a {
@@ -14817,14 +14817,15 @@ a:hover {
 /* Mobile header */
 .header-mobile { background: #1D1A39 !important; }
 .header-mobile__bar { background: #451952 !important; }
-.navbar-mobile { background: #1D1A39 !important; }
+.navbar-mobile { background: #451952 !important; }
 .navbar-mobile__list li a { color: rgba(255,255,255,0.75) !important; }
 .navbar-mobile__list li a:hover { color: #F39F5A !important; }
 
 /* Hamburger color */
 .hamburger-inner,
 .hamburger-inner::before,
-.hamburger-inner::after { background-color: #ffffff !important; }
+.hamburger-inner::after { background-color: #1D1A39 !important; }
+.hamburger { opacity: 1 !important; visibility: visible !important; }
 
 /* Search button */
 .au-btn--submit { background: #662549 !important; }
@@ -14832,3 +14833,44 @@ a:hover {
 
 /* Footer */
 .copyright p { color: #888 !important; }
+
+/* ===== HANGARIN MOBILE TABLE FIX ===== */
+@media screen and (max-width: 768px) {
+
+  /* Table text smaller */
+  .table td, .table th {
+    padding: 0.4rem !important;
+    font-size: 12px !important;
+  }
+
+  /* Edit/Delete buttons stack vertically */
+  .table td .au-btn {
+    display: block !important;
+    width: 100% !important;
+    margin: 2px 0 !important;
+    padding: 4px 6px !important;
+    font-size: 11px !important;
+    text-align: center !important;
+  }
+
+  /* Filter row stacks vertically */
+  .row.align-items-end .col-md-2,
+  .row.align-items-end .col-md-3,
+  .row.align-items-end .col-md-4,
+  .row.align-items-end .col-md-5 {
+    margin-bottom: 8px !important;
+  }
+
+  /* Overview stat cards - 2 per row on mobile */
+  .overview-item {
+    margin-bottom: 15px !important;
+  }
+
+}
+
+@media screen and (max-width: 576px) {
+  /* Stat cards full width on small phones */
+  .col-sm-6 {
+    width: 100% !important;
+  }
+}

@@ -35,7 +35,7 @@
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
                         <a class="logo" href="{% url 'home' %}">
-                            <strong style="color:#fff; font-size:20px; font-family:'Playfair Display',serif;">Hangarin</strong>
+                            <strong style="color:#fff; font-size:30px; font-family:'Playfair Display',serif;">Hangarin</strong>
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -86,13 +86,18 @@
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
                 <a href="{% url 'home' %}">
-                    <strong style="color:#fff; font-size:22px; font-family:'Playfair Display',serif; letter-spacing:1px;">Hangarin</strong>
-                    <p style="color:rgba(255,255,255,0.4); font-size:10px; margin:4px 0 0; letter-spacing:2px; text-transform:uppercase;">Task Manager</p>
+                    <strong style="color:#fff; font-size:30px; font-family:'Playfair Display',serif; letter-spacing:1px;">Hangarin</strong>
+                    <p style="color:rgba(255,255,255,0.4); font-size:10px; margin:0px 0 0; letter-spacing:2px; text-transform:uppercase;">Task Manager</p>
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
+
+                        <!-- MAIN section -->
+                        <li class="nav-section">
+                            <span style="font-size:20px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.35); padding: 16px 25px 6px; display:block;">Main</span>
+                        </li>
 
                         <li class="{% block nav_dashboard %}{% endblock %}">
                             <a href="{% url 'home' %}">
@@ -102,6 +107,12 @@
                             <a href="{% url 'task-list' %}">
                                 <i class="fas fa-tasks"></i>All Tasks</a>
                         </li>
+
+                        <!-- TASK DETAILS section -->
+                        <li class="nav-section">
+                            <span style="font-size:20px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.35); padding: 16px 25px 6px; display:block;">Task Details</span>
+                        </li>
+
                         <li class="{% block nav_subtasks %}{% endblock %}">
                             <a href="{% url 'subtask-list' %}">
                                 <i class="fas fa-list"></i>Subtasks</a>
@@ -196,7 +207,7 @@
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
-                                            <img src="{% static 'img/profile.jpg' %}" alt="{{ request.user.username }}" />
+                                            <img src="{% static 'img/user.jpg' %}" alt="{{ request.user.username }}" />
                                         </div>
                                         <div class="content">
                                             <a class="js-acc-btn" href="#">{{ request.user.username }}</a>
@@ -204,7 +215,7 @@
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
                                                 <div class="image">
-                                                    <img src="{% static 'img/profile.jpg' %}" alt="{{ request.user.username }}" />
+                                                    <img src="{% static 'img/user.jpg' %}" alt="{{ request.user.username }}" />
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">{{ request.user.username }}</h5>
