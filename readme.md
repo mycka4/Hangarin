@@ -111,3 +111,5 @@ Hangarin/
 
 ---
 
+## Author
+Mycka P. Valoroso
