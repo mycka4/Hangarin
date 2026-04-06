@@ -24,6 +24,7 @@ from tasks.views import PriorityList, PriorityCreateView, PriorityUpdateView, Pr
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path('', include('pwa.urls')),
     path("accounts/", include("allauth.urls")), # allauth routes
 
     # Home
