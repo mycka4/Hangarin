@@ -10,9 +10,9 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         self.seed_priorities()
         self.seed_categories()
-        self.create_tasks(10)
-        self.create_notes(10)
-        self.create_subtasks(10)
+        self.create_tasks(40)
+        self.create_notes(15)
+        self.create_subtasks(30)
         self.stdout.write(self.style.SUCCESS('All fake data seeded successfully!'))
 
     def seed_priorities(self):

@@ -5,6 +5,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from tasks.models import Task, SubTask, Category, Note, Priority
 from tasks.forms import TaskForm, SubTaskForm, CategoryForm, NotesForm, PriorityForm
+from django.db.models import Count, Q
 
 class HomePageView(LoginRequiredMixin,  ListView):
     model = Task
@@ -17,6 +18,20 @@ class HomePageView(LoginRequiredMixin,  ListView):
         context['completed_tasks'] = Task.objects.filter(status='Completed').count()
         context['inprogress_tasks'] = Task.objects.filter(status='In Progress').count()
         context['pending_tasks'] = Task.objects.filter(status='Pending').count()
+        # New additions
+        context['recent_tasks'] = Task.objects.order_by('-created_at')[:5]
+        context['categories'] = Category.objects.annotate(
+            total=Count('task'),
+            completed=Count('task', filter=Q(task__status='Completed')),
+            inprogress=Count('task', filter=Q(task__status='In Progress')),
+            pending=Count('task', filter=Q(task__status='Pending')),
+        )
+        context['priorities'] = Priority.objects.annotate(
+            total=Count('task'),
+            completed=Count('task', filter=Q(task__status='Completed')),
+            inprogress=Count('task', filter=Q(task__status='In Progress')),
+            pending=Count('task', filter=Q(task__status='Pending')),
+        )
         return context
 
 class TaskList(LoginRequiredMixin, ListView):
