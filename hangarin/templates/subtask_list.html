@@ -26,12 +26,12 @@
 
                         <div class="col-md-5">
                             <label style="font-size:11px; font-weight:700; color:#662549; text-transform:uppercase; letter-spacing:1px;">Search</label>
-                            <input type="text" name="q" value="{{ q }}" placeholder="Search subtasks ..." class="au-input au-input--full" />
+                            <input type="text" name="q" value="{{ q }}" placeholder="Search subtasks ..." class="au-input au-input--full" style="height:40px;" />
                         </div>
 
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <label style="font-size:11px; font-weight:700; color:#662549; text-transform:uppercase; letter-spacing:1px;">Status</label>
-                            <select name="status" class="au-input au-input--full">
+                            <select name="status" class="au-input au-input--full" style="height:40px;">
                                 <option value="">All Status</option>
                                 <option value="Pending" {% if selected_status == 'Pending' %}selected{% endif %}>Pending</option>
                                 <option value="In Progress" {% if selected_status == 'In Progress' %}selected{% endif %}>In Progress</option>
